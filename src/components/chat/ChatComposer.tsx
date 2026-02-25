@@ -164,7 +164,7 @@ export function ChatComposer() {
   }, []);
 
   return (
-    <ComposerPrimitive.Root className="rounded-2xl border-2 border-white/[0.06] bg-[var(--surface)] transition-all duration-300 focus-within:border-[var(--accent)]/40 focus-within:ring-1 focus-within:ring-[var(--accent)]/15 hover:border-white/[0.1]">
+    <ComposerPrimitive.Root className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] transition-all duration-300 focus-within:border-[var(--accent)]/40 focus-within:ring-1 focus-within:ring-[var(--accent)]/15 hover:border-white/[0.12]">
       <div className="px-4 py-3 md:px-5 md:py-3.5">
         <ComposerPrimitive.Input
           autoFocus

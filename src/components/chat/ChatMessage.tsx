@@ -8,16 +8,14 @@ import {
 import { MarkdownTextPrimitive } from "@assistant-ui/react-markdown";
 
 /* ------------------------------------------------------------------ */
-/*  Assistant icon                                                      */
+/*  Sparkle icon                                                        */
 /* ------------------------------------------------------------------ */
 
-function AssistantIcon() {
+function SparkleIcon({ className }: { className?: string }) {
   return (
-    <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[var(--accent)] to-[#b8885a]">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 3v18M3 12h18M5.636 5.636l12.728 12.728M18.364 5.636 5.636 18.364" />
-      </svg>
-    </div>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <path d="M12 3v18M3 12h18M5.636 5.636l12.728 12.728M18.364 5.636 5.636 18.364" />
+    </svg>
   );
 }
 
@@ -81,7 +79,7 @@ export function UserMessage() {
   return (
     <MessagePrimitive.Root className="msg-item animate-slide-in-up">
       <div className="flex justify-end">
-        <div className="max-w-[85%] rounded-2xl bg-white/[0.07] px-4 py-2.5 text-[15px] leading-relaxed text-white">
+        <div className="max-w-[85%] rounded-2xl bg-[var(--surface-light)] px-4 py-2.5 text-[15px] leading-relaxed text-white">
           <MessagePrimitive.Attachments
             components={{ File: FileAttachmentWrapper }}
           />
@@ -105,9 +103,13 @@ function FileAttachmentWrapper() {
 export function AssistantMessage() {
   return (
     <MessagePrimitive.Root className="msg-item animate-slide-in-up">
-      <div className="flex items-start gap-3">
-        <AssistantIcon />
-        <div className="min-w-0 flex-1 text-[15px] leading-relaxed text-zinc-200">
+      <div>
+        {/* "Answer" label with sparkle */}
+        <div className="flex items-center gap-1.5 mb-2">
+          <SparkleIcon className="text-[var(--accent)]" />
+          <span className="text-[13px] font-semibold text-[var(--accent)]">Answer</span>
+        </div>
+        <div className="min-w-0 text-[15px] leading-relaxed text-zinc-200">
           <MessagePrimitive.Parts
             components={{ Text: AssistantTextPart }}
           />

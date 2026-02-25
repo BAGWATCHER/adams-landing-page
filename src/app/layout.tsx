@@ -1,25 +1,19 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, Chakra_Petch } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const chakraPetch = Chakra_Petch({
-  variable: "--font-body",
+const inter = Inter({
+  variable: "--font-sans",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
 });
 
-const bebasNeue = Bebas_Neue({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: "400",
-});
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://adamn.info"),
-  title: "Adam Normandin — AI Systems & Agents",
+  title: "AI built for you — Adam Normandin",
   description:
-    "Custom AI bots built around your docs, standards, and workflow. $375/hr, builds from $3K. Delivery in days, not months. API-only — your data is never stored or used for training.",
-  other: { "theme-color": "#09090b" },
+    "Custom AI agents and bots that connect to your tools, run real workflows, and keep data handled with care. Builds from $3K. $375/hr. Delivery in days, not months.",
+  other: { "theme-color": "#1a1a1a" },
   icons: {
     icon: [
       { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
@@ -27,18 +21,18 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "Adam Normandin — AI Systems & Agents",
+    title: "AI built for you — Adam Normandin",
     description:
-      "Custom AI bots built around your docs, standards, and workflow. $375/hr, builds from $3K. Delivery in days, not months. API-only — your data is never stored or used for training.",
-    images: [{ url: "/og.png" }],
+      "Custom AI agents and bots that connect to your tools and run real workflows. Builds from $3K. $375/hr.",
+    images: [{ url: "/og-logo.png", width: 1200, height: 630 }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Adam Normandin — AI Systems & Agents",
+    title: "AI built for you — Adam Normandin",
     description:
-      "Custom AI bots built around your docs, standards, and workflow. $375/hr, builds from $3K. Delivery in days, not months. API-only — your data is never stored or used for training.",
-    images: ["/og.png"],
+      "Custom AI agents and bots that connect to your tools and run real workflows. Builds from $3K. $375/hr.",
+    images: ["/og-logo.png"],
   },
 };
 
@@ -50,7 +44,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body
-        className={`${chakraPetch.variable} ${bebasNeue.variable} antialiased`}
+        className={`${inter.variable} antialiased`}
       >
         {children}
       </body>
