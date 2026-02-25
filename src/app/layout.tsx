@@ -1,22 +1,24 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Bebas_Neue, Chakra_Petch } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const chakraPetch = Chakra_Petch({
+  variable: "--font-body",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const bebasNeue = Bebas_Neue({
+  variable: "--font-display",
   subsets: ["latin"],
+  weight: "400",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("http://3.142.111.235"),
+  metadataBase: new URL("https://adamn.info"),
   title: "Adam Normandin — AI Systems & Agents",
   description:
-    "Custom AI bots + AI consulting — built around your docs, standards, and workflow. Typical $375/hr (scope-dependent). Setup often 2–3 hrs. Delivery usually within 1–3 days.",
+    "Custom AI bots built around your docs, standards, and workflow. $375/hr, builds from $3K. Delivery in days, not months. API-only — your data is never stored or used for training.",
   other: { "theme-color": "#09090b" },
   icons: {
     icon: [
@@ -27,15 +29,15 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Adam Normandin — AI Systems & Agents",
     description:
-      "Custom AI bots + AI consulting — built around your docs, standards, and workflow. Typical $375/hr (scope-dependent). Setup often 2–3 hrs. Delivery usually within 1–3 days.",
+      "Custom AI bots built around your docs, standards, and workflow. $375/hr, builds from $3K. Delivery in days, not months. API-only — your data is never stored or used for training.",
     images: [{ url: "/og.png" }],
     type: "website",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Adam Normandin — AI Systems & Agents",
     description:
-      "Custom AI bots + AI consulting — built around your docs, standards, and workflow. Typical $375/hr (scope-dependent). Setup often 2–3 hrs. Delivery usually within 1–3 days.",
+      "Custom AI bots built around your docs, standards, and workflow. $375/hr, builds from $3K. Delivery in days, not months. API-only — your data is never stored or used for training.",
     images: ["/og.png"],
   },
 };
@@ -48,7 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${chakraPetch.variable} ${bebasNeue.variable} antialiased`}
       >
         {children}
       </body>
