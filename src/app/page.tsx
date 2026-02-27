@@ -1,6 +1,7 @@
 import { LandingHero } from "@/components/landing/LandingHero";
 import { LandingShell } from "@/components/landing/LandingShell";
 import { ExampleBuilds } from "@/components/ExampleBuilds";
+import { LiveDemos } from "@/components/landing/LiveDemos";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <LandingShell>
         <main>
           <LandingHero />
+          <LiveDemos />
           <ExampleBuilds />
         </main>
 

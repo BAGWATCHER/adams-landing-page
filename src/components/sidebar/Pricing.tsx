@@ -40,7 +40,7 @@ export function Pricing() {
               linkText: "Cost to build an AI agent →",
             },
           ].map((r) => (
-            <div key={r.label} className="rounded-xl border border-[var(--border)] bg-white/[0.02] p-4">
+            <div key={r.label} className="rounded-md bg-white/[0.04] p-4">
               <div className="text-[13px] font-semibold text-zinc-200">{r.label}</div>
               <p className="mt-1.5 text-[13px] leading-relaxed text-zinc-400">{r.detail}</p>
               <a

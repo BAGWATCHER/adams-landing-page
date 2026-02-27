@@ -39,7 +39,7 @@ export function HowItWorks() {
             { name: "Drafting agent", desc: "Writes emails, proposals, reports in your voice. Learns your tone and phrasing over time. Outputs drafts, not just suggestions." },
             { name: "Validation agent", desc: "Reviews outputs before they leave the system — flags errors, enforces business rules, catches edge cases before they reach a customer." },
           ].map((a) => (
-            <div key={a.name} className="rounded-xl border border-[var(--border)] bg-white/[0.02] px-4 py-3">
+            <div key={a.name} className="rounded-md bg-white/[0.04] px-4 py-3">
               <div className="text-[13px] font-semibold text-[var(--accent)]">{a.name}</div>
               <p className="mt-1 text-[13px] leading-relaxed text-zinc-400">{a.desc}</p>
             </div>
@@ -64,7 +64,7 @@ export function HowItWorks() {
             "Stripe / QuickBooks",
             "Custom REST or GraphQL APIs",
           ].map((t) => (
-            <div key={t} className="rounded-lg border border-[var(--border)] bg-white/[0.02] px-3 py-2 text-[12px] text-zinc-300">
+            <div key={t} className="rounded bg-white/[0.04] px-3 py-2 text-[12px] text-zinc-300">
               {t}
             </div>
           ))}

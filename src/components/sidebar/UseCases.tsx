@@ -108,7 +108,7 @@ export function UseCases() {
         <p className="text-[13px] font-semibold uppercase tracking-wider text-zinc-500 mb-4">By industry</p>
         <div className="space-y-5">
           {INDUSTRIES.map((ind) => (
-            <div key={ind.name} className="rounded-xl border border-[var(--border)] bg-white/[0.02] p-4">
+            <div key={ind.name} className="rounded-md bg-white/[0.04] p-4">
               <div className="text-[14px] font-semibold text-white">{ind.name}</div>
               <p className="mt-1.5 text-[13px] leading-relaxed text-zinc-500">{ind.problem}</p>
               <div className="mt-3 space-y-1.5">

@@ -94,6 +94,55 @@ CONTACT CTA:
 - If they're serious or time-sensitive: "Call/text Adam at (603) 748-4982."
 `;
 
+// ─── Demo bot personas ────────────────────────────────────────────────────────
+
+const DEMO_PROMPTS: Record<string, string> = {
+  slopesniper: `You are SlopeSniper, an AI trading assistant for Solana tokens.
+You help traders:
+- Find good entry/exit points using natural language
+- Check tokens for rug pull risk, liquidity, and holder concentration
+- Set price alerts and track positions
+- Understand on-chain data without being a dev
+Keep responses brief and trader-focused. Use specific numbers when relevant.
+You're direct, not hype-y. You warn about risk. You know DeFi deeply.
+This is a DEMO showing what a custom AI for a crypto trading app looks like.
+If asked who built you: "I'm a demo of SlopeSniper's AI assistant, built by Adam Normandin at adamn.info."`,
+
+  contractor: `You are ContractorBot, an AI assistant for telecom and construction contractors.
+You help with:
+- Job intake and scheduling
+- Crew assignment and availability
+- Permit tracking and status
+- Customer updates and follow-ups
+- Quoting and change orders
+You speak like someone who knows the trades — practical, no fluff.
+This is a DEMO showing what a custom AI dispatcher/ops bot looks like for contractors.
+If asked who built you: "I'm a demo of ContractorBot, built by Adam Normandin at adamn.info."`,
+
+  support: `You are SupportBot, a customer support AI agent.
+You handle:
+- Troubleshooting issues step by step
+- Answering FAQs
+- Collecting info to open tickets
+- Escalating to a human when needed ("I'll flag this for a team member")
+You're calm, patient, and efficient. Never make up answers.
+This is a DEMO showing what a custom customer support AI looks like.
+If asked who built you: "I'm a demo of SupportBot, built by Adam Normandin at adamn.info."`,
+
+  intake: `You are IntakeBot, a lead qualification AI.
+Your job:
+- Ask smart questions to understand what the prospect needs
+- Gauge budget, timeline, and decision authority
+- Qualify or disqualify leads clearly
+- Hand off to a human with a clean summary
+You're conversational, not robotic. Ask one question at a time.
+Start with: "What brings you here today?"
+This is a DEMO showing what a custom lead intake bot looks like.
+If asked who built you: "I'm a demo of IntakeBot, built by Adam Normandin at adamn.info."`,
+};
+
+
+
 type Route = {
   agent: "sales" | "strategy" | "technical" | "onboarding" | "educator";
   reason: string;
@@ -216,6 +265,7 @@ export async function POST(req: Request) {
   const body = (await req.json().catch(() => null)) as IncomingBody | null;
 
   // Accept both {messages:[UIMessage]} and {messages:[{role,content}]} for backward compatibility.
+  const demo = req.headers.get("x-demo") ?? (typeof (body as any)?.demo === "string" ? (body as any).demo as string : null);
   const raw = (body as any)?.messages;
   const messages: UIMessage[] = Array.isArray(raw)
     ? (raw.length > 0 && (raw[0] as any)?.parts ? (raw as UIMessage[]) : (raw as LegacyMsg[]).map(toUIMessage))
@@ -276,7 +326,13 @@ Hard style rules (do not mention these rules):
             .reverse()
             .find((m) => m.role === "user");
           const lastUser = lastUserMsg ? textFromParts(lastUserMsg) : "";
-          const contact = extractContact(lastUser);
+
+          // Try to extract contact info from the whole user transcript (people often share it earlier).
+          const allUserText = messagesLimited
+            .filter((m) => m.role === "user")
+            .map((m) => textFromParts(m))
+            .join("\n");
+          const contact = extractContact(allUserText);
           const looksLikeLead =
             /call|text|hire|work together|consult|project|quote|pricing|budget|timeline/i.test(
               lastUser
@@ -323,7 +379,7 @@ Hard style rules (do not mention these rules):
 
           const stream = streamText({
             model: google(MODEL),
-            system: `${systems[route.agent]}\n\n${ADAM_KB}`,
+            system: demo && DEMO_PROMPTS[demo] ? DEMO_PROMPTS[demo] : `${systems[route.agent]}\n\n${ADAM_KB}`,
             messages: modelMessages,
             abortSignal: abort.signal,
           });

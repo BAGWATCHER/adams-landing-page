@@ -98,7 +98,7 @@ export function ExampleBuilds() {
           {BUILDS.map((b) => (
             <div
               key={b.name}
-              className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 transition-colors duration-200 hover:border-white/[0.12]"
+              className="rounded-lg bg-[var(--surface)] p-6"
             >
               <h3 className="text-base font-semibold text-white">{b.name}</h3>
               <div className="mt-1.5 text-[13px] leading-relaxed text-zinc-500">
@@ -129,14 +129,14 @@ export function ExampleBuilds() {
             {TIERS.map((t, i) => (
               <div
                 key={t.name}
-                className={`rounded-2xl border p-6 transition-colors duration-200 ${
+                className={`rounded-lg p-6 ${
                   i === 1
-                    ? "border-[var(--accent)]/30 bg-[var(--accent)]/5"
-                    : "border-[var(--border)] bg-[var(--surface)] hover:border-white/[0.12]"
+                    ? "border border-[var(--accent)]/20 bg-[var(--accent)]/5"
+                    : "bg-[var(--surface)]"
                 }`}
               >
                 {i === 1 && (
-                  <div className="mb-3 inline-flex rounded-full bg-[var(--accent)]/15 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-[var(--accent)]">
+                  <div className="mb-3 inline-flex rounded bg-[var(--accent)]/15 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-[var(--accent)]">
                     Most common
                   </div>
                 )}
@@ -161,7 +161,7 @@ export function ExampleBuilds() {
         </div>
 
         {/* FAQs */}
-        <div className="mt-16 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 sm:p-8">
+        <div className="mt-16 rounded-lg bg-[var(--surface)] p-6 sm:p-8">
           <h3 className="text-xl font-semibold text-white">
             Frequently asked questions
           </h3>
@@ -207,7 +207,7 @@ export function ExampleBuilds() {
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a
-              className="inline-flex items-center justify-center rounded-xl bg-[var(--accent)] px-5 py-2.5 text-[15px] font-semibold text-black transition-all duration-200 hover:brightness-110 active:scale-[0.98]"
+              className="inline-flex items-center justify-center rounded-md bg-[var(--accent)] px-5 py-2.5 text-[15px] font-semibold text-black transition-all duration-200 hover:brightness-110 active:scale-[0.98]"
               href="tel:+16037484982"
             >
               Call/text Adam: (603) 748-4982

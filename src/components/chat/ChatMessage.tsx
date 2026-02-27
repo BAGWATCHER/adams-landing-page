@@ -79,7 +79,7 @@ export function UserMessage() {
   return (
     <MessagePrimitive.Root className="msg-item animate-slide-in-up">
       <div className="flex justify-end">
-        <div className="max-w-[85%] rounded-2xl bg-[var(--surface-light)] px-4 py-2.5 text-[15px] leading-relaxed text-white">
+        <div className="max-w-[85%] rounded-lg bg-[var(--surface-light)] px-4 py-2.5 text-[15px] leading-relaxed text-white">
           <MessagePrimitive.Attachments
             components={{ File: FileAttachmentWrapper }}
           />

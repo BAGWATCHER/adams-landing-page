@@ -1,11 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAui } from "@assistant-ui/react";
 import { ChatThread } from "@/components/chat/ChatThread";
 import { Sidebar, SidebarTrigger } from "@/components/Sidebar";
+import { DemoSelector } from "@/components/chat/DemoSelector";
+import { useState } from "react";
 
 export default function ChatPage() {
   const searchParams = useSearchParams();
@@ -20,7 +22,9 @@ export default function ChatPage() {
     if (!q || sentRef.current) return;
     sentRef.current = true;
     aui.thread().append(q);
-    router.replace("/chat");
+    // Keep demo param if present, just remove q
+    const demo = searchParams.get("demo");
+    router.replace(demo ? `/chat?demo=${demo}` : "/chat");
   }, [searchParams, aui, router]);
 
   return (
@@ -42,10 +46,8 @@ export default function ChatPage() {
           </Link>
         </div>
 
-        <div className="flex items-center gap-2.5">
-          <div className="h-2 w-2 rounded-full bg-[var(--accent)] shadow-[0_0_6px_var(--accent-dim)]" />
-          <span className="text-sm font-medium text-zinc-200">Adam&apos;s Assistant</span>
-        </div>
+        {/* Demo selector — center */}
+        <DemoSelector />
 
         <NewChatButton />
       </header>

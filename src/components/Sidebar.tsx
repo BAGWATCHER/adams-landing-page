@@ -160,7 +160,7 @@ export function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
         <div className="border-t border-[var(--border)] px-4 py-3">
           <a
             href="tel:+16037484982"
-            className="flex items-center justify-center gap-2 rounded-xl bg-[var(--accent)] px-4 py-2.5 text-[14px] font-semibold text-black transition-all hover:brightness-110 active:scale-[0.98]"
+            className="flex items-center justify-center gap-2 rounded-md bg-[var(--accent)] px-4 py-2.5 text-[14px] font-semibold text-black transition-all hover:brightness-110 active:scale-[0.98]"
           >
             Call/text Adam: (603) 748-4982
           </a>
