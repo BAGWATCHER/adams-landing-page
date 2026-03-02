@@ -7,8 +7,8 @@ import { useRouter } from "next/navigation";
 const SUGGESTIONS = [
   { label: "I want my own AI assistant" },
   { label: "AI for my team" },
-  { label: "Is my data safe?" },
-  { label: "What can AI do for you?" },
+  { label: "AI for manufacturing & engineering" },
+  { label: "Agentic payments" },
 ];
 
 export function LandingHero() {
